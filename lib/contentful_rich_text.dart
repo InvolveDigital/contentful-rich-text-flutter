@@ -6,6 +6,7 @@ import 'package:contentful_rich_text/types/helpers.dart';
 import 'package:contentful_rich_text/types/inlines.dart';
 import 'package:contentful_rich_text/types/marks.dart';
 import 'package:contentful_rich_text/types/types.dart';
+import 'package:contentful_rich_text/widgets/asset.dart';
 import 'package:contentful_rich_text/widgets/heading.dart';
 import 'package:contentful_rich_text/widgets/hr.dart';
 import 'package:contentful_rich_text/widgets/hyperlink.dart';
@@ -57,6 +58,13 @@ class ContentfulRichText {
           next: next,
         ),
     BLOCKS.EMBEDDED_ENTRY.value: (node, next) => Container(), // TODO: implement
+    BLOCKS.EMBEDDED_ASSET.value: (node, next) => Asset(
+          url: node['data']['target']['fields']['file']['url'],
+          width: node['data']['target']['fields']['file']['details']['image']
+              ['width'],
+          height: node['data']['target']['fields']['file']['details']['image']
+              ['height'],
+        ),
     BLOCKS.UL_LIST.value: (node, next) =>
         UnorderedList(node['content'] ?? '', next),
     BLOCKS.OL_LIST.value: (node, next) =>
