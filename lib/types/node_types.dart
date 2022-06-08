@@ -52,6 +52,13 @@ class Quote extends Block {
   List<dynamic>? content;
 }
 
+// Asset
+class Asset extends Block {
+  BLOCKS nodeType = BLOCKS.EMBEDDED_ASSET;
+  Map<dynamic, dynamic>? data;
+  List<dynamic>? content;
+}
+
 // Horizontal rule
 class Hr extends Block {
   BLOCKS nodeType = BLOCKS.HR;
